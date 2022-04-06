@@ -11,11 +11,20 @@ class PostImageController < ApplicationController
   end
 
   def index
+    @post_images = PostImage.all
   end
 
   def show
+    @post_images = PostImage.find(params[:id])
   end
 end
+
+ def destroy
+   @post_images = PostImage.find(params[:id])
+   if @post_images.destroy
+     redirect_to post_images_path
+   end
+ end
 
 
  # 投稿データのストロングパラメータ
